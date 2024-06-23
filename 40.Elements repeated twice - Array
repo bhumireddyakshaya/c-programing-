@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int originalArray[] = {1, 2, 3, 4, 5};
+    int repeatedArray[10];
+    
+    for (int i = 0; i < 5; i++) {
+        repeatedArray[i * 2] = originalArray[i];
+        repeatedArray[i * 2 + 1] = originalArray[i];
+    }
+    
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", repeatedArray[i]);
+    }
+    
+    return 0;
+}
