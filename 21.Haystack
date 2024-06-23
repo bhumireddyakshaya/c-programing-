@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main() {
+    char haystack[] = "Finding a needle in a haystack.";
+    char needle[] = "needle";
+
+    printf("Haystack: %s\n", haystack);
+    printf("Needle: %s\n", needle);
+
+    return 0;
+}
