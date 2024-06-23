@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *left, *right;
+};
+
+struct Node* insert(struct Node* root, int data) {
+    if (root == NULL) {
+        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        newNode->data = data;
+        newNode->left = newNode->right = NULL;
+        return newNode;
+    }
+
+    if (data < root->data)
+        root->left = insert(root->left, data);
+    else if (data > root->data)
+        root->right = insert(root->right, data);
+
+    return root;
+}
+
+void kthMinValue(struct Node* root, int k, int* count) {
+    if (root == NULL || *count >= k)
+        return;
+
+    kthMinValue(root->left, k, count);
+
+    (*count)++;
+    if (*count == k) {
+        printf("%d-th minimum value in the BST is: %d\n", k, root->data);
+        return;
+    }
+
+    kthMinValue(root->right, k, count);
+}
+
+int main() {
+    struct Node* root = NULL;
+    int keys[] = { 20, 8, 22, 4, 12, 10, 14 };
+
+    for (int key : keys)
+        root = insert(root, key);
+
+    int k = 3;
+    int count = 0;
+    kthMinValue(root, k, &count);
+
+    return 0;
+}
