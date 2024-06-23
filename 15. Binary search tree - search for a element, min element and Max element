@@ -1,0 +1,30 @@
+// Search for an element in a Binary Search Tree
+struct Node* search(struct Node* root, int key) {
+    if (root == NULL || root->data == key)
+        return root;
+
+    if (root->data < key)
+        return search(root->right, key);
+
+    return search(root->left, key);
+}
+
+// Find the minimum element in a Binary Search Tree
+struct Node* minValueNode(struct Node* node) {
+    struct Node* current = node;
+
+    while (current && current->left != NULL)
+        current = current->left;
+
+    return current;
+}
+
+// Find the maximum element in a Binary Search Tree
+struct Node* maxValueNode(struct Node* node) {
+    struct Node* current = node;
+
+    while (current && current->right != NULL)
+        current = current->right;
+
+    return current;
+}
