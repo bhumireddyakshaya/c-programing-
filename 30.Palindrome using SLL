@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+struct Node {
+    char data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+void insert(char value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = head;
+    head = newNode;
+}
+
+bool isPalindrome() {
+    struct Node* current = head;
+    int length = 0;
+    
+    while (current != NULL) {
+        length++;
+        current = current->next;
+    }
+    
+    char arr[length];
+    current = head;
+    
+    for (int i = 0; i < length; i++) {
+        arr[i] = current->data;
+        current = current->next;
+    }
+    
+    for (int i = 0, j = length - 1; i < j; i++, j--) {
+        if (arr[i] != arr[j]) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+int main() {
+    insert('r');
+    insert('a');
+    insert('d');
+    insert('a');
+    insert('r');
+    
+    if (isPalindrome()) {
+        printf("The linked list is a palindrome.\n");
+    } else {
+        printf("The linked list is not a palindrome.\n");
+    }
+    
+    return 0;
+}
