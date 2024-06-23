@@ -1,0 +1,11 @@
+// Heap Sort
+void heapSort(int arr[], int n);
+
+// Merge Sort
+void mergeSort(int arr[], int left, int right);
+
+// Insertion Sort
+void insertionSort(int arr[], int n);
+
+// Quick Sort
+void quickSort(int arr[], int low, int high);
